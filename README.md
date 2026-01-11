@@ -20,7 +20,8 @@ http://18.216.249.197/
 
 
 
-Technology Used: 
+# Technology Used: 
+
   Python 3.9 / 3.10 
   Fask 
   Gunicon 
@@ -30,7 +31,8 @@ Technology Used:
   SSH (edd25519)
 
 
-JSON Generated Repostisty Strcutruve
+# JSON Generated Repostisty Structure
+
 .
 |--.github/workflows/
 |--build/
@@ -50,7 +52,7 @@ JSON Generated Repostisty Strcutruve
 |--Makefile
 |--README.md
 
- ** Local Setup: ** 
+ Local Setup: 
 
 Assuming source code is ran on a python FLASK, proceed with: brew install python@3.10
 
