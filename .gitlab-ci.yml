@@ -1,0 +1,71 @@
+stages:
+  - test
+  - build
+  - deploy
+
+variables: 
+    IMAGE_NAME: lumos9atronum/mydocker1
+    IMAGE_TAG: mydocker1-1.0
+
+
+run_test:
+  stage: test
+  image: python:3.9-slim
+
+  before_script:
+    - apt-get update && apt-get install -y make git
+    - python -m pip install --upgrade pip
+
+  script:
+    - make test
+
+run_build:
+  stage: build
+  image: docker:24.0
+  services:
+    - docker:24.0-dind
+  variables:
+    DOCKER_TLS_CERTDIR: "/certs"
+
+  before_script:
+    - echo "$REGISTRY_PASS" | docker login -u "$REGISTRY_USER" --password-stdin
+  script:
+    - docker build -t $IMAGE_NAME:$IMAGE_TAG -f build/Dockerfile .
+    - docker push $IMAGE_NAME:$IMAGE_TAG
+
+# Create SSH key file from gitlab varibale: private key 
+# SSH into EC2 
+# pull docker image i just built 
+# stop old contianer 
+# run new container 
+# inside variabkles: EC2_SSH_KEY - ec2_gitlab.pem(not masked) - EC2_HOST (public IP) EC2_USER - ubuntu 
+
+# (apk add --no-cahce openssh - so we can skip the prompt(fingerprint(yes/no)
+# chmod 6000 creates temprart SSh key file at runtime -
+# ssh-keyscan-  trust scan each host line by line 
+#my (image)app:latest(container name) 
+
+
+deploy_run:
+  stage: deploy
+  image: alpine:3.19
+
+  before_script:
+    - apk add --no-cache openssh
+    - mkdir -p ~/.ssh
+    - printf "%s\n" "$EC2_SSH_KEY" > ~/.ssh/id_ed25519
+    - chmod 600 ~/.ssh/id_ed25519
+    - ssh-keyscan -H "$EC2_HOST" >> ~/.ssh/known_hosts
+
+  script:
+    - |
+      ssh $EC2_USER@$EC2_HOST << EOF
+        docker pull $IMAGE_NAME:$IMAGE_TAG
+        docker stop myapp || true
+        docker rm myapp || true
+        docker run -d \
+          --name myapp \
+          -p 80:5000 \
+          $IMAGE_NAME:$IMAGE_TAG
+      EOF
+
