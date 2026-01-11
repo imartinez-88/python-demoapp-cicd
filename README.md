@@ -67,11 +67,11 @@ brew install python@3.10
 python3.10 -m venv src/venv
 source src/venv/bin/activate
 
-# Install dependecies:
+## Install dependecies:
 pip install --upgrade pip 
 pip intall -r src/requirments.txt 
 
-# Older python base image: 
+## Older python base image: 
 pip install "jinja<3.0" "werkzeug<2.0" "itsdangerous<2.0"
 
 
@@ -138,7 +138,7 @@ Base Image:
 
 
 # Step 2 - CI/CD Docker Build & Push
-  # Create Variables: 
+## Create Variables: 
   REGISTRY_USER > Docker username 
   REGISTRY_PASS > Docker access token
 
