@@ -15,4 +15,4 @@ The goal is to understand **end-to-end deployment flow**, not just application c
 
 ## Final Result (Observable Output)
 
-**Live Application URL**
+http://18.216.249.197/
