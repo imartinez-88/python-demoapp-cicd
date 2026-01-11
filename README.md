@@ -134,7 +134,7 @@ ls ~/.ssh
 cat ~/.ssh/id_ed255199.pub 
 
 
-** STEP 1 = CD ** 
+** Step 1 = CD ** 
 ** Assure that variable is saved- Navigate to Gitlab project (CODE) connect to WEB IDE ** 
 
 # Inside connect to project name - add .gityml
