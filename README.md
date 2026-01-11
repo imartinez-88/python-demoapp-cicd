@@ -111,6 +111,7 @@ Running on http://0.0.0.0.
 # CI/CD Overview 
 <pre> 
   The pipeline is split into three stages: 
+  
     - Test CI - Validating applications
     - Build CI - Build and push Docker Images
     - Deploy CD - SSH deploy to AWS EC2 
