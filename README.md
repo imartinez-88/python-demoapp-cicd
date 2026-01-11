@@ -19,7 +19,7 @@ Not need for port forwarding, tunneling or curl.
 http://18.216.249.197/
 
 
-```text
+
 # Technology Used: 
 
   Python 3.9 / 3.10 
@@ -29,11 +29,11 @@ http://18.216.249.197/
   Gitlab CI/CD
   AWS EC2 (Ubunto) 
   SSH (edd25519)
-```text
+
 
 # Project Structure
 
-```text
+'''text
 .
 |--.github/workflows/
 |--build/
@@ -53,7 +53,6 @@ http://18.216.249.197/
 |--Makefile
 |--README.md- like actualy how its displayed vertially and not hortizanlly
 
-```text
 
  Local Setup: 
 
