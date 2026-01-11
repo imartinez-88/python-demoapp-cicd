@@ -30,29 +30,27 @@ http://18.216.249.197/
   AWS EC2 (Ubunto) 
   SSH (edd25519)
 
-
 # Project Structure
+
+```text
 .
-├── .github
-│   └── workflows
-│       └── (your CI files if any)
-├── build
-│   └── Dockerfile
-├── deploy
-│   └── (deployment scripts or configs)
-├── src
-│   ├── app
-│   │   ├── init.py
-│   │   ├── views.py          # allows MAC native users to bypass cpuinfo
-│   │   ├── templates/
-│   │   └── static/
-│   ├── run.py
-│   └── requirements.txt
-├── tests
-├── .gitignore
-├── .gitlab-ci.yml
-├── Makefile
-└── README.md
+|--.github/workflows/
+|--build/
+| ╰Dockerfile
+|--deploy/
+|---src/
+| |--app/
+| | |--**int**.py
+| | |--views.py -- allows MAC native users to bypass cpuinfo
+| | |--templates/
+| | |--static/
+| |--run.py
+| |--requirments.txt
+|--tests/
+|--.gitignore
+|--.gitlab-ci.yml
+|--Makefile
+|--README.md- like actualy how its displayed vertially and not hortizanlly
 
  Local Setup: 
 
