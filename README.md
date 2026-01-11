@@ -121,7 +121,7 @@ Running on http://0.0.0.0.
 # Step 1 - Test Stage
 Base Image: 
    - python:3.9-slim
-# .gitlab-ci.yml: Test push
+# Test push:.gitlab-ci.yml
 <pre> 
     stages:
          test
