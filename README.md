@@ -10,6 +10,7 @@ This project demonstrates a **fully automated CI/CD pipeline** that takes a Pyth
 - Environment variables and secrets
 
 The goal is to understand **end-to-end deployment flow**, not just application code.
+Not need for port forwarding, tunneling or curl.
 
 ---
 
