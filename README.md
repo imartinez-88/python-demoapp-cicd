@@ -121,7 +121,7 @@ Running on http://0.0.0.0.
 # Step 1 - Test Stage
 Base Image: 
    - python:3.9-slim
-# Test push:.gitlab-ci.yml
+# Test push: .gitlab-ci.yml
 <pre> 
     stages:
          test
@@ -143,7 +143,7 @@ Base Image:
   REGISTRY_USER > Docker username 
   REGISTRY_PASS > Docker access token
 
-## Build Config yml
+## Build Config: .gitlab-ci.yml
 <pre> 
 stages: 
   - build
@@ -188,7 +188,7 @@ EC2_USER = ubuntu
 
 
 # Step 4 - CD Deployment to EC2
-## Deploy Job 
+## Deploy Job: .gitlab-ci.yml
 <pre> 
 stages:
   - deploy
