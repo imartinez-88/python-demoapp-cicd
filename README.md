@@ -123,9 +123,11 @@ cat ~/.ssh/id_ed255199.pub
 # Rerfernce Docker image directory: https://hub.docker.com/_/python
 
 stages: # specify test
-test 
+-
+  -test 
 
 run_test:  -- Design job
+-
 stage: test
 image:python3.9-slim
 before_script:  
@@ -133,6 +135,7 @@ before_script:
   - python -m pip install --upgrade pip
 
 script: 
+-
   - make take
 **                                                                                      **
 
@@ -160,23 +163,30 @@ Docker generated token
 # Moving on to build stage ONLY if build was success - Back into yml in web IDE
 # Update
 stages:
+-  
   - build
 
 variables: 
+-
   IMAGE_NAME: [username/projectname]  -- refernce connection to Docker container connection 
   IMAGE_TAG: mydocker1-1.0
 
 run_build:
+-
   stage: build
   image: docker:24.0  -- Create docker image inside docker image - Docker daemon allows execution of command pulls on images and data
   services: 
-   - docker:24.0-dind -- Services starts at the jobs time as job (run_build) container, servies attributes link together same netwrok or container during execution. 
+   - docker:24.0-dind -- Services starts at the jobs time as job (run_build) container, servies attributes link together same netwrok or container during execution.
+     
 variables:
+-
   DOCKER_TLS_CERIR:"/certs" - Allows communication from docker cerfcation and authenticate each other 
 
 before_script:
+-
     - echo "$REGISTRY_PASS" | docker login -u "$REGISTRY" --password-stdin
 script: 
+-
     - docker build -t $IMAGE_NAME:$IMAGE_TAGE -f build/Dockerfile .
     - docker push $IMAGE_NAME:$IMAGE_TAG
   
@@ -218,14 +228,18 @@ Step 3 = CD
 ** Now that we have desird varibles to boilerplate CI/CD will host out FLASK onto the EC2 instance via SSH ** 
 # Navgiate back to Web IDE to run deplpy job
 
-stages: 
-  - deplpoy
+script:
+  -
+  - deploy
+
 
 deploy_run: 
+  - 
   stage: deploy
   image: alpine:3.19
 
 before_script: 
+  - 
   - apk add --no-cache openssh                           -- To skip prompt (fingerprint(yes/no)
   - mkdir -p ~/.ssh                                      -- Path to .ssh
   - printf "%s\n" "$EC2_SSH_KEY" > ~/.ssh/id_ed25519     -- printf allows string to be followed by new line
