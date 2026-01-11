@@ -46,17 +46,17 @@ http://18.216.249.197/
 ├── src/
 │   ├── app/
 │   │   ├── __init__.py
-│   │   ├── views.py  # allows macOS users to bypass cpuinfo
+│   │   ├── views.py      -- Allows macOS users to bypass cpuinfo 
 │   │   ├── templates/
 │   │   └── static/
 │   │
 │   ├── run.py
-│   └── requirements.txt
+│   └── requirements.txt  -- Establishes rules 
 │
 ├── tests/
 ├── .gitignore
 ├── .gitlab-ci.yml
-├── Makefile
+├── Makefile             -- Host many languages being used at once
 └── README.md
 </pre>
 
