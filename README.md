@@ -119,10 +119,10 @@ Running on http://0.0.0.0.
 
 
 # Step 1 - Test Stage
-<pre> 
 Base Image: 
    - python:3.9-slim
-.gitlab-ci.yml: Test push
+# .gitlab-ci.yml: Test push
+<pre> 
     stages:
          test
     run_test:
