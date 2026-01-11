@@ -33,6 +33,7 @@ http://18.216.249.197/
 
 # Project Structure
 
+<pre>
 .
 ├── .github/
 │   └── workflows/
@@ -45,7 +46,7 @@ http://18.216.249.197/
 ├── src/
 │   ├── app/
 │   │   ├── __init__.py
-│   │   ├── views.py        # allows macOS users to bypass cpuinfo
+│   │   ├── views.py  # allows macOS users to bypass cpuinfo
 │   │   ├── templates/
 │   │   └── static/
 │   │
@@ -53,12 +54,11 @@ http://18.216.249.197/
 │   └── requirements.txt
 │
 ├── tests/
-│
 ├── .gitignore
 ├── .gitlab-ci.yml
 ├── Makefile
 └── README.md
-
+</pre>
 
 
  Local Setup: 
