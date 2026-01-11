@@ -20,7 +20,7 @@ http://18.216.249.197/
 
 
 
-** Technology Used: ** 
+Technology Used: 
   Python 3.9 / 3.10 
   Fask 
   Gunicon 
@@ -30,7 +30,7 @@ http://18.216.249.197/
   SSH (edd25519)
 
 
-** JSON Generated Repostisty Strcutruve ** 
+JSON Generated Repostisty Strcutruve
 .
 |--.github/workflows/
 |--build/
