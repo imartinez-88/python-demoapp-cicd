@@ -75,10 +75,10 @@ pip intall -r src/requirments.txt
 pip install "jinja<3.0" "werkzeug<2.0" "itsdangerous<2.0"
 
 
-## macOS cpuinfo Compatibility Fix: maxOS may raise 
+## macOS cpuinfo compatibility Fix: maxOS may raise 
 Exception: py-cpuinfo currently only works on X86 and some ARM/PPC/S390X CPUs.
 
-## Solution 
+# Solution 
 <pre>
    Open File: 
     src/app/views.py
