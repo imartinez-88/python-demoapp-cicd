@@ -12,7 +12,8 @@ This project demonstrates a **fully automated CI/CD pipeline** that takes a Pyth
 The goal is to understand **end-to-end deployment flow**, not just application code.
 Not need for port forwarding, tunneling or curl.
 
----
+
+
 
 ## Final Result (Observable Output)
 
@@ -29,6 +30,7 @@ http://18.216.249.197/
   Gitlab CI/CD
   AWS EC2 (Ubunto) 
   SSH (edd25519)
+
 
 
 # Project Structure
@@ -61,22 +63,23 @@ http://18.216.249.197/
 </pre>
 
 
- Local Setup: 
+# Local Setup: 
 
 Assuming source code is ran on a python FLASK, proceed with: brew install python@3.10
+
 
 # Start evironment: 
 python3.10 -m venv src/venv
 
-# source: 
+# Source Code Environment: 
 source src/venv/bin/activate
 
-# install dependecies:
+# Install dependecies:
 pip install --upgrade pip -- being that this demo python project is running on an older python verion: 3.9slim
 pip intall -r src/requirments.txt 
 
-# In this case if using an older python pip: 
-pip install "jinja<3.0" is required
+# In this case if your using an older python pip: 
+pip install "jinja<3.0" 
 
 # As well for venv 
 pip install "werkzeug<2.0" "itsdangerous<2.0"
@@ -84,8 +87,9 @@ pip install "werkzeug<2.0" "itsdangerous<2.0"
 # MAC users possible OS error outputting: 
 Exception: py-cpuinfo currently only works on X86 and some ARM/PPC/S390X CPUs.
 
+<pre>
 # Solution inside code visualiser 
-  # Open File: 
+   Open File: 
     src/app/views.py
          - Code: 
              import cpuinfo
@@ -100,13 +104,17 @@ Exception: py-cpuinfo currently only works on X86 and some ARM/PPC/S390X CPUs.
              else:
                  info = {"brand_raw": "Uknown CPU"} 
           - Save 
-         
+ </pre>
+ 
 # now export path 
 export PYTHONPATH=src
 python src/run.py
 
 # Output will show:
 Running on http://0.0.0.0.
+
+
+
 
 ** Once its live locally, create or connect account to gitlab create project name and clone data ** 
 # Inside navigate to setting; select add variables: save attribute name and key (ed25519)
@@ -132,13 +140,11 @@ cat ~/.ssh/id_ed255199.pub
 # Inside connect to project name - add .gityml
 # Create first CI test inside yml file for python:3.9-slim 
 # Rerfernce Docker image directory: https://hub.docker.com/_/python
-
+<pre> 
 stages: # specify test
--
   -test 
 
 run_test:  -- Design job
--
 stage: test
 image:python3.9-slim
 before_script:  
@@ -146,9 +152,10 @@ before_script:
   - python -m pip install --upgrade pip
 
 script: 
--
   - make take
-**                                                                                      **
+</pre>
+
+
 
 ## EXPECTED OUTPUT - GITLAB PIPELINE DEPLOYMENT TEST SUCCESSFUL ## 
 
@@ -173,34 +180,30 @@ Docker generated token
 ** Step 2 = CD ** 
 # Moving on to build stage ONLY if build was success - Back into yml in web IDE
 # Update
+<pre> 
 stages:
--  
   - build
 
-variables: 
--
+variables:
   IMAGE_NAME: [username/projectname]  -- refernce connection to Docker container connection 
   IMAGE_TAG: mydocker1-1.0
 
 run_build:
--
   stage: build
   image: docker:24.0  -- Create docker image inside docker image - Docker daemon allows execution of command pulls on images and data
   services: 
    - docker:24.0-dind -- Services starts at the jobs time as job (run_build) container, servies attributes link together same netwrok or container during execution.
      
 variables:
--
   DOCKER_TLS_CERIR:"/certs" - Allows communication from docker cerfcation and authenticate each other 
 
 before_script:
--
     - echo "$REGISTRY_PASS" | docker login -u "$REGISTRY" --password-stdin
 script: 
--
     - docker build -t $IMAGE_NAME:$IMAGE_TAGE -f build/Dockerfile .
     - docker push $IMAGE_NAME:$IMAGE_TAG
-  
+
+</pre>
 ## EXPECTED OUTPUT - SUCCESSFUL TEST DEPLPYMENT ## 
 
 
@@ -238,19 +241,16 @@ cat ~/.ssh/aws1-key.pem
 Step 3 = CD 
 ** Now that we have desird varibles to boilerplate CI/CD will host out FLASK onto the EC2 instance via SSH ** 
 # Navgiate back to Web IDE to run deplpy job
-
+<pre>
 script:
-  -
   - deploy
 
 
 deploy_run: 
-  - 
   stage: deploy
   image: alpine:3.19
 
 before_script: 
-  - 
   - apk add --no-cache openssh                           -- To skip prompt (fingerprint(yes/no)
   - mkdir -p ~/.ssh                                      -- Path to .ssh
   - printf "%s\n" "$EC2_SSH_KEY" > ~/.ssh/id_ed25519     -- printf allows string to be followed by new line
@@ -258,7 +258,6 @@ before_script:
   - ssh-keyscan -H "$EC2_HOST" >> ~/.ssh/known_hosts     -- Trust scan each host line by line  
    
 script: 
-  - 
     ssh $EC2_USER@EC2_HOST <<EOF
       docker pull $IMAGE_NAME:$IMAGE_TAG
       docker stop myapp || true                          -- Stop Docker image and container 
@@ -268,9 +267,10 @@ script:
         -p 80:5000 \ 
         $IMAGE_NAME:$IMAGE_TAG
     EOF
-
+</pre>
 
 ## EXPECTED OUTPUT DEPLOY SUCCESSUFUL ON EC2 HOST ## 
+
 
 
 
