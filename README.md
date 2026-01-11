@@ -1,7 +1,7 @@
 # Python Flask CI/CD Pipeline (Docker + AWS EC2)
 
 # Purpose
-This project demonstrates a fully automated CI/CD pipeline that takes a Python Flask application from source code to a live, publicly accessible cloud deployment using:
+This project demonstrates a fully automated **CI/CD pipeline that takes a Python Flask application from source code to a live, publicly accessible cloud deployment using**:
 
 - GitLab CI/CD
 - Docker images
