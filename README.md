@@ -135,7 +135,7 @@ Base Image:
          - make test
 </pre>
 
-# Expected Result: Gitlab pipeline test stage succeeded! 
+## Expected Result: Gitlab pipeline test stage succeeded! 
 
 
 # Step 2 - CI/CD Docker Build & Push
@@ -163,7 +163,7 @@ script:
   - docker push $IMAGE_NAME:$IMAGE_TAG
 </pre>
 
-# EXPECTED RESULT: Docker Image Successfully pushed to registry 
+## Expected Result: Docker Image Successfully pushed to registry 
 
 # Step 3 - AWS EC2 Setup 
 ## Create SSH key 
@@ -205,7 +205,7 @@ deploy_run:
 script: 
     - shh $EC2_USER@EC2_HOST
 </pre>
-# EXPECTED RESULT: Applicaiton Live on EC2 
+## Expected Result: Applicaiton Live on EC2 
 
 # What This Project Demonstrates
 
