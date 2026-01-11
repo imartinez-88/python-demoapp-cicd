@@ -33,25 +33,32 @@ http://18.216.249.197/
 
 # Project Structure
 
-'''text
 .
-|--.github/workflows/
-|--build/
-| ╰Dockerfile
-|--deploy/
-|---src/
-| |--app/
-| | |--**int**.py
-| | |--views.py -- allows MAC native users to bypass cpuinfo
-| | |--templates/
-| | |--static/
-| |--run.py
-| |--requirments.txt
-|--tests/
-|--.gitignore
-|--.gitlab-ci.yml
-|--Makefile
-|--README.md- like actualy how its displayed vertially and not hortizanlly
+├── .github/
+│   └── workflows/
+│
+├── build/
+│   └── Dockerfile
+│
+├── deploy/
+│
+├── src/
+│   ├── app/
+│   │   ├── __init__.py
+│   │   ├── views.py        # allows macOS users to bypass cpuinfo
+│   │   ├── templates/
+│   │   └── static/
+│   │
+│   ├── run.py
+│   └── requirements.txt
+│
+├── tests/
+│
+├── .gitignore
+├── .gitlab-ci.yml
+├── Makefile
+└── README.md
+
 
 
  Local Setup: 
