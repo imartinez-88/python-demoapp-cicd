@@ -31,26 +31,28 @@ http://18.216.249.197/
   SSH (edd25519)
 
 
-# JSON Generated Repostisty Structure
-
+# Project Structure
 .
-|--.github/workflows/
-|--build/
-|     ╰Dockerfile
-|--deploy/
-|---src/
-|   |--app/
-|   |  |--__int__.py
-|   |  |--views.py  -- allows MAC native users to bypass cpuinfo
-|   |  |--templates/
-|   |  |--static/
-|   |--run.py
-|   |--requirments.txt
-|--tests/
-|--.gitignore
-|--.gitlab-ci.yml
-|--Makefile
-|--README.md
+├── .github
+│   └── workflows
+│       └── (your CI files if any)
+├── build
+│   └── Dockerfile
+├── deploy
+│   └── (deployment scripts or configs)
+├── src
+│   ├── app
+│   │   ├── init.py
+│   │   ├── views.py          # allows MAC native users to bypass cpuinfo
+│   │   ├── templates/
+│   │   └── static/
+│   ├── run.py
+│   └── requirements.txt
+├── tests
+├── .gitignore
+├── .gitlab-ci.yml
+├── Makefile
+└── README.md
 
  Local Setup: 
 
