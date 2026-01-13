@@ -15,7 +15,7 @@ Not need for port forwarding, tunneling or curl.
 # Final Result (Live Deployment)
 http://18.216.249.197/
 
-<img width="1500" height="794" alt="Screenshot 2026-01-12 at 7 00 02 PM" src="https://github.com/user-attachments/assets/ae9370c3-7635-4ca2-8527-38e3ddbce02e" />
+<img width="1657" height="788" alt="Screenshot 2026-01-12 at 7 02 42 PM" src="https://github.com/user-attachments/assets/1d7b4567-2760-46ca-a78e-80ffdb075650" />
 
 
 ## Technology Used: 
