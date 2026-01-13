@@ -167,7 +167,7 @@ script:
 
 # Step 3 - AWS EC2 Setup 
 ## Create SSH key 
-ssh-keygen -t ED25519 -f ~/.ssh/ec2_gitlab [/choose unique name]  
+ssh-keygen -t ED25519 -f ~/.ssh/ec2_gitlab  
 ## Output 
 /User/username/.ssh/gitlab_ec2
 /Users/username/.ssh/gitlab_ec2.pub
