@@ -150,16 +150,16 @@ stages:
 
 run_build: 
   stage: build
-  image: docker:24.0    --Define docker CLI image 
+  image: docker:24.0                                              --Define docker CLI image 
   services: 
-    - docker:24.0-dind  --Enable docker in docker capability
+    - docker:24.0-dind                                            --Enable docker in docker capability
   varibales: 
     DOCKER_TLS_CERDIR: "/certs"
   
-before_script:          --Authenticate to docker container registry 
-    - echo "$REGISTRY_PASS | docker login -u "$REGISTRY_USER" --password-stdin 
+before_script:                                                    --Authenticate to docker container registry 
+    - echo "$REGISTRY_PASS | docker login -u "$REGISTRY_USER"     --password-stdin 
 script:
-  - docker build -t $IMAGE_NAME:$IMAGE_TAG -f build/Dockerfile . --Build and push image using Dockerfile 
+  - docker build -t $IMAGE_NAME:$IMAGE_TAG -f build/Dockerfile .  --Build and push image using Dockerfile 
   - docker push $IMAGE_NAME:$IMAGE_TAG
 </pre>
 
