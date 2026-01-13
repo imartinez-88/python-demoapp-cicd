@@ -150,16 +150,16 @@ stages:
 
 run_build: 
   stage: build
-  image: docker:24.0
+  image: docker:24.0    --Define docker CLI image 
   services: 
-    - docker:24.0-dind
+    - docker:24.0-dind  --Enable docker in docker capability
   varibales: 
     DOCKER_TLS_CERDIR: "/certs"
   
-before_script:
-    - echo "$REGISTRY_PASS | docker login -u "$REGISTRY_USER" --password-stdin
+before_script:          --Authenticate to docker container registry 
+    - echo "$REGISTRY_PASS | docker login -u "$REGISTRY_USER" --password-stdin 
 script:
-  - docker build -t $IMAGE_NAME:$IMAGE_TAG -f build/Dockerfile . 
+  - docker build -t $IMAGE_NAME:$IMAGE_TAG -f build/Dockerfile . --Build and push image using Dockerfile 
   - docker push $IMAGE_NAME:$IMAGE_TAG
 </pre>
 
@@ -190,20 +190,20 @@ EC2_USER = ubuntu
 # Step 4 - CD Deployment to EC2
 ## Deploy Job: .gitlab-ci.yml
 <pre> 
-stages:
-  - deploy
+stages:        
+  - deploy                                              --Define deployment stage
 
 deploy_run: 
-  stage: deplpoy
-  image: alpine:3.19 
+  stage: deploy
+  image: alpine:3.19                                    --Use lightweight linux environment 
   before_script: 
-    - apk add --no-cache openssh 
-    - mkdir -p ~/.ssh
-    - printf "%s\n" "$EC2_SSH_KEY" > ~/.ssh/id_ed25519
-    - chmod 600 ~/.ssh/id_ed25519
-    - ssh-keyscan -H "$EC2_HOST" >> ~/.ssh/known_hosts
+    - apk add --no-cache openssh                        --Install SSH client 
+    - mkdir -p ~/.ssh                                   --Directory for security keys 
+    - printf "%s\n" "$EC2_SSH_KEY" > ~/.ssh/id_ed25519  --read and load private key 
+    - chmod 600 ~/.ssh/id_ed25519                       --Port security permissions 
+    - ssh-keyscan -H "$EC2_HOST" >> ~/.ssh/known_hosts  --Scan verifed host identity 
 script: 
-    - shh $EC2_USER@EC2_HOST
+    - shh $EC2_USER@$EC2_HOST
 </pre>
 ## Expected Result: Applicaiton Live on EC2 
 
