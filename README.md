@@ -213,6 +213,6 @@ script:
 END-to-END CI/CD ownership 
 Dockerized Python services 
 Secure SSH-based cloud deployment
-Secrets managment via Gitlab variables
+Secrets management via Gitlab variables
 Cloud infrastructure oversight 
 
