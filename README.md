@@ -154,7 +154,7 @@ run_build:
   image: docker:24.0                                              --Define docker CLI image 
   services: 
     - docker:24.0-dind                                            --Enable docker in docker capability
-  varibales: 
+  variables: 
     DOCKER_TLS_CERDIR: "/certs"
   
 before_script:                                                    --Authenticate to docker container registry 
@@ -180,7 +180,7 @@ Attach keypair
 Open Port 80 /5000 (your chose ports)
 </pre>
 
-## Store Secerets inside Gitlab Setting > Variabels
+## Store Secerets inside Gitlab Setting > Variables
 <pre> 
 EC2_SSH_KEY = Private key content linking AWS instance ~/.ssh 
 EC2_HOST = EC2 public IP 
